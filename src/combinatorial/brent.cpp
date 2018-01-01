@@ -48,7 +48,7 @@ std::pair<int, int> detect_brent_cycle(const std::vector<int>& sequence) {
 }
 
 int main() {
-    int arr[] = {2, 0, 6, 3, 1, 6, 3, 1};
+    int arr[] = {2, 0, 6, 3, 1, 6, 3, 1}; // don't have time to fix c++ version to support initalizer list
     std::vector<int> sequence(arr, arr + 8);
     std::pair<int, int> p = detect_brent_cycle(sequence);
     std::cout << "lam == " << p.first << ", mu == " << p.second << std::endl;
