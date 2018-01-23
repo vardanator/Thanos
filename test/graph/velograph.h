@@ -16,29 +16,22 @@ namespace thanos {
 
 namespace tests {
 
-struct GraphInputTester {
+struct VeloGraphTester {
     static void Run() {
         graphs::ConnectedVELOGraph g;
-
-        /*
-        Having graph:
-         A - B
-         B - A
-         B - C
-         B - D
-         C - B
-         C - D
-         D - C
-         D - B
-        */
-
 
         g.InsertEdge("A", "B");
         g.InsertEdge("B", "A");
         g.InsertEdge("B", "C");
         g.InsertEdge("C", "B");
-
         g.Print();
+
+        std::cout << "Tracing from A, path is: " << std::endl;
+        auto path = g.Trace("A");
+        for (const auto& v : path) {
+            std::cout << v << " -> ";
+        }
+        std::cout << std::endl;
     }
 };
 

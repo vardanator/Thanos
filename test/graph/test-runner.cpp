@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-#include "test-input.h"
+#include "velograph.h"
 
 // change later to use central runner for all tests
 int main()
 {
-    thanos::tests::GraphInputTester::Run();
+    thanos::tests::VeloGraphTester::Run();
 }

@@ -9,7 +9,6 @@
 #define THANOS_GRAPH_STRUCTURE_REPRESENTATION_VELOGRAPH_H
 
 #include <map>
-#include <list>
 #include <vector>
 #include <iostream>
 #include <unordered_map>
@@ -19,7 +18,7 @@ namespace thanos {
 namespace graphs {
 
 // A representation of a graph with both vertex and edge tables
-// Vertex table is just a vector of lists
+// Vertex table is a hashtable of edges (mapped by label)
 // Edge table is a structure with 4 fields
 // VELO = Vertex Edge Label Only (e.g. no vertex payloads)
 
@@ -65,17 +64,28 @@ public:
         }
     }
 
-    void Trace() {
-        // later
+    std::vector<std::string> Trace(const std::string& v) {
+        std::vector<std::string> path;
+        Edge* e = vertices_[v];
+        while (e != nullptr) {
+            if (e->used) {
+                e = e->next;
+            } else {
+                e->used = true;
+                path.push_back(e->from);
+                path.push_back(e->to);
+                e = vertices_[e->to];
+            }
+        }
+        return path;
     }
 
 private:
     void InsertVertexEdge_(const std::string& label, Edge* e) {
-        Edge* cur = vertices_[label];
-        if (!cur) {
-            cur = e;
+        if (vertices_.count(label) == 0) {
+            vertices_[label] = e;
         } else {
-            cur->next = e;
+            vertices_[label]->next = e;
         }
     }
 
