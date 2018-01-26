@@ -21,9 +21,7 @@ struct VeloGraphTester {
         graphs::ConnectedVELOGraph g;
 
         g.InsertEdge("A", "B");
-        g.InsertEdge("B", "A");
         g.InsertEdge("B", "C");
-        g.InsertEdge("C", "B");
         g.Print();
 
         std::cout << "Tracing from A, path is: " << std::endl;
@@ -32,6 +30,26 @@ struct VeloGraphTester {
             std::cout << v << " -> ";
         }
         std::cout << std::endl;
+    }
+
+    static void TestEulerGraphTracing() {
+        graphs::ConnectedVELOGraph g;
+
+        g.InsertEdge("A", "B");
+        g.InsertEdge("B", "A");
+        g.InsertEdge("A", "C");
+        g.InsertEdge("A", "D");
+        g.InsertEdge("D", "A");
+        g.InsertEdge("B", "C");
+        g.InsertEdge("C", "D");
+
+        std::cout << "Tracing from A, path is: " << std::endl;
+        auto path = g.Trace("A");
+        for (const auto& v : path) {
+            std::cout << v << " -> ";
+        }
+        std::cout << std::endl;
+        g.Print();
     }
 };
 

@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-#ifndef THANOS_GRAPH_STRUCTURE_REPRESENTATION_VELOGRAPH_H
-#define THANOS_GRAPH_STRUCTURE_REPRESENTATION_VELOGRAPH_H
+#ifndef THANOS_GRAPH_REPRESENTATION_VELOGRAPH_H
+#define THANOS_GRAPH_REPRESENTATION_VELOGRAPH_H
 
 #include <map>
 #include <vector>
@@ -72,8 +72,7 @@ public:
                 e = e->next;
             } else {
                 e->used = true;
-                path.push_back(e->from);
-                path.push_back(e->to);
+                path.push_back(e->from + ":-:" + e->to);
                 e = vertices_[e->to];
             }
         }
@@ -97,4 +96,4 @@ private:
 }
 }
 
-#endif // THANOS_GRAPH_STRUCTURE_REPRESENTATION_VELOGRAPH_H
+#endif // THANOS_GRAPH_REPRESENTATION_VELOGRAPH_H

@@ -5,10 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+#include "AMGraph.h"
 #include "velograph.h"
 
 // change later to use central runner for all tests
 int main()
 {
-    thanos::tests::VeloGraphTester::Run();
+    //thanos::tests::VeloGraphTester::Run();
+    //thanos::tests::VeloGraphTester::TestEulerGraphTracing();
+    thanos::tests::AMGraphTester::Run();
 }
