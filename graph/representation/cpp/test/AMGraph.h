@@ -10,7 +10,7 @@
 
 #include <iostream>
 
-#include "./../../src/graph/representation/cpp/AMGraph.h"
+#include "./../src/AMGraph.h"
 
 namespace thanos {
 

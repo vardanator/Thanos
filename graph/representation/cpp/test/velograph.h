@@ -10,7 +10,7 @@
 
 #include <iostream>
 
-#include "./../../src/graph/representation/cpp/velograph.h"
+#include "./../src/velograph.h"
 
 namespace thanos {
 
